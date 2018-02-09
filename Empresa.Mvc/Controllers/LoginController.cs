@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Empresa.Mvc.ViewModels;
 using Empresa.Repositorios.SqlServer;
-using Empresa.Dominio;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 
@@ -12,13 +12,13 @@ using Microsoft.Extensions.Configuration;
 
 namespace Empresa.Mvc.Controllers
 {
-    public class ContatosController : Controller
+    public class LoginController : Controller
     {
         private readonly EmpresaDbContext _db;// = new EmpresaDbContext();
         private readonly IDataProtector _protectorProvider;
 
-        public ContatosController(EmpresaDbContext db, 
-            IDataProtectionProvider protectionProvider, 
+        public LoginController(EmpresaDbContext db,
+            IDataProtectionProvider protectionProvider,
             IConfiguration configuracao)
         {
             //this.db = db;
@@ -29,23 +29,23 @@ namespace Empresa.Mvc.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View(_db.Contatos.OrderBy(c => c.Nome).ToList());
-        }
-
-        public IActionResult Create()
-        {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Contato contato)
+        public IActionResult Index(LoginViewModel viewModel)
         {
-            contato.Senha = _protectorProvider.Protect(contato.Senha);
+            var contato = _db.Contatos.Where(c => c.Email == viewModel.Email &&
+               _protectorProvider.Unprotect(c.Senha) == viewModel.Senha).SingleOrDefault();
 
-            _db.Contatos.Add(contato);
-            _db.SaveChanges();
+            if (contato == null)
+            {
+                ModelState.AddModelError("", "Usuário/Senha incorretos.");
 
-            return RedirectToAction("Index");
+                return View(viewModel);
+            }
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

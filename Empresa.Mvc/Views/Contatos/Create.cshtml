@@ -1,4 +1,4 @@
-﻿@model Loja.Mvc.Areas.Vendas.Models.ProdutoViewModel
+﻿@model Contato
 
 @{
     ViewBag.Title = "Create";
@@ -7,12 +7,12 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm("Create", "Produtos", FormMethod.Post, new { enctype="multipart/form-data" }))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>ProdutoViewModel</h4>
+        <h4>Novo Contato</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -24,38 +24,36 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Preco, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Preco, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Preco, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Estoque, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label asp-for="Senha" class="control-label col-md-2"></label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Estoque, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Estoque, "", new { @class = "text-danger" })
+                <input type="password" asp-for="Senha" class="form-control" />
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CategoriaId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Assunto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.CategoriaId,
-                    Model.Categorias,
-                    "",
-                    new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CategoriaId, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Assunto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Assunto, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label col-md-2" })
+            @*@Html.LabelFor(model => model.Assunto, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label asp-for="Mensagem" class="control-label col-md-2"></label>
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Imagem, 
-               new { @class = "form-control", type="file", accept="image/*" } )
-                @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
+                @*@Html.EditorFor(model => model.Assunto, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input asp-for="Mensagem" class="form-control"/>
+                @*@Html.ValidationMessageFor(model => model.Assunto, "", new { @class = "text-danger" })*@
+                <span asp-validation-for="Mensagem" class="text-danger"></span>
             </div>
         </div>
 
@@ -72,5 +70,5 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
 }
