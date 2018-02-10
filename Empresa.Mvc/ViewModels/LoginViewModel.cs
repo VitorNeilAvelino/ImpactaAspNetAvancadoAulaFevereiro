@@ -4,7 +4,7 @@ namespace Empresa.Mvc.ViewModels
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "O campo email é obrigatório.")]
         [EmailAddress]
         public string Email { get; set; }
 

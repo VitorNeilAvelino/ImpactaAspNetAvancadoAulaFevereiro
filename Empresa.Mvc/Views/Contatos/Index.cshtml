@@ -6,9 +6,14 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@*@if (User.HasClaim("Role", "Admin"))*@
+@if (User.IsInRole("Admin"))
+    {
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
