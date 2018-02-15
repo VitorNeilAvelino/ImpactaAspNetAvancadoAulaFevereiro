@@ -1,6 +1,7 @@
 ﻿using Loja.Dominio;
 using Loja.Repositorios.SqlServer.EF.Migrations;
 using Loja.Repositorios.SqlServer.EF.ModelConfiguration;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Loja.Repositorios.SqlServer.EF
 {
-    public class LojaDbContext : DbContext
+    public class LojaDbContext : IdentityDbContext<Usuario>
     {
         public LojaDbContext() : base("name=lojaConnectionString")
         {
@@ -27,13 +28,16 @@ namespace Loja.Repositorios.SqlServer.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            //modelBuilder.Entity<Usuario>().ToTable("Usuario");
+            //modelBuilder.Entity<IdentityRole>().ToTable("Perfil");
 
             modelBuilder.Configurations.Add(new ProdutoConfiguration());
             modelBuilder.Configurations.Add(new ProdutoImagemConfiguration());
             modelBuilder.Configurations.Add(new CategoriaConfiguration());
-
-            base.OnModelCreating(modelBuilder);
         }
     }
 }

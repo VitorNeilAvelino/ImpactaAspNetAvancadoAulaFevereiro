@@ -18,7 +18,7 @@ namespace Loja.Mvc.Areas.Vendas.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
-            throw new Exception("Erro na listagem de produtos.");
+            //throw new Exception("Erro na listagem de produtos.");
             return View(Mapeamento.Mapear(db.Produtos.ToList()));
         }
 
