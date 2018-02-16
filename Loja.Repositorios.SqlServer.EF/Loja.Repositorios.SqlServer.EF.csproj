@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201802142215141_AddUsuario.Designer.cs">
       <DependentUpon>201802142215141_AddUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802160013433_AddProdutoEmLeilao.cs" />
+    <Compile Include="Migrations\201802160013433_AddProdutoEmLeilao.Designer.cs">
+      <DependentUpon>201802160013433_AddProdutoEmLeilao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelConfiguration\CategoriaConfiguration.cs" />
     <Compile Include="ModelConfiguration\ProdutoConfiguration.cs" />
@@ -96,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802142215141_AddUsuario.resx">
       <DependentUpon>201802142215141_AddUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802160013433_AddProdutoEmLeilao.resx">
+      <DependentUpon>201802160013433_AddProdutoEmLeilao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

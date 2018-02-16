@@ -6,6 +6,9 @@ namespace Loja.Mvc.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        public string Nome { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -64,6 +67,11 @@ namespace Loja.Mvc.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Nome")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        public string Nome { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

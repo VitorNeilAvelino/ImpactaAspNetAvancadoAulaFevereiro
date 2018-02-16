@@ -152,7 +152,7 @@ namespace Loja.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new Usuario { UserName = model.Email, Email = model.Email };
+                var user = new Usuario { UserName = model.Email, Email = model.Email, Nome = model.Nome };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -368,7 +368,7 @@ namespace Loja.Mvc.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new Usuario { UserName = model.Email, Email = model.Email };
+                var user = new Usuario { UserName = model.Email, Email = model.Email, Nome = model.Nome };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
