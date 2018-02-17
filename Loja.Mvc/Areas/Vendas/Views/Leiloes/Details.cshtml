@@ -1,0 +1,103 @@
+﻿@using System.Security.Claims
+@model Loja.Mvc.Areas.Vendas.Models.ProdutoViewModel
+
+@{
+    ViewBag.Title = "Leilão";
+}
+
+<h2>Leilão</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h4>Detalhes do produto</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Imagem)
+            </dt>
+
+            <dd>
+                <img src="~/ImagemProduto/Miniatura?produtoId=@Model.Id&largura=200&altura=200" title="@Model.Nome" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Preco)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Preco)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Estoque)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Estoque)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoriaNome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CategoriaNome)
+            </dd>
+
+        </dl>
+
+        <h4>Participante</h4>
+        <hr />
+        <div id="participanteDiv" class="form-group">
+            @Html.Label("Nome", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group" style="display: inline-flex">
+                    @Html.TextBox("nomeParticipante", ((ClaimsIdentity)User.Identity).FindFirst("Nome")?.Value, new { @class = "form-control" })
+                    <span class="input-group-btn">
+                        <button type="button" id="entrarButton" class="btn btn-default">Participar</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div id="lanceDiv" class="form-group" style="display:none">
+            @Html.Label("Lance", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group" style="display: inline-flex">
+                    @Html.TextBox("valorLance", "", new { @class = "form-control", placeholder = "Valor do lance" })
+                    <span class="input-group-btn">
+                        <button type="button" id="enviarLanceButton" class="btn btn-default">Enviar</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>Lances realizados <span id="sinoNotificacoes" data-toggle="popover" class="glyphicon glyphicon-bell pull-right"></span></h4>
+        <hr />
+        <div id="lancesRealizadosDiv" style="overflow: auto; height:320px">
+            <table id="lancesRealizadosTable" class='table table-striped'></table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <br />
+    <hr />
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/Scripts/Leiloes/details.js"></script>
+    <script type="text/javascript">
+        $(document).ready(Details.inicializar(@Model.Id));
+    </script>
+}
