@@ -20,6 +20,7 @@ namespace Loja.Mvc.Areas.Vendas.Models
 
         [Required]
         [Display(Name = "Preço")]
+        [DataType(DataType.Currency)]
         public decimal? Preco { get; set; }
 
         [Required]

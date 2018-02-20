@@ -14,5 +14,15 @@ namespace Loja.Mvc.Hubs
             await Groups.Add(Context.ConnectionId, produtoId);
             Clients.Group(produtoId).adicionarMensagem(nomeParticipante, Context.ConnectionId, "Bom leilão a todos!");
         }
+
+        public void EnviarLance(string nomeParticipante, string valor, string produtoId)
+        {
+            Clients.Group(produtoId).adicionarMensagem(nomeParticipante, Context.ConnectionId, valor);
+        }
+
+        public void EnviarLike(string nomeParticipante, string connectionIdDestinatario)
+        {
+            Clients.Client(connectionIdDestinatario).receberLike(nomeParticipante);
+        }
     }
 }

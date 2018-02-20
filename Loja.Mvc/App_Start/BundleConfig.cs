@@ -26,6 +26,7 @@ namespace Loja.Mvc
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/flags.min.css",
                       "~/Content/site.css"));
         }
     }

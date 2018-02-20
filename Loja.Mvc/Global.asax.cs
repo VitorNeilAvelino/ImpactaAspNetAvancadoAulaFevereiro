@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Loja.Mvc.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -18,6 +20,14 @@ namespace Loja.Mvc
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             log4net.Config.XmlConfigurator.Configure();
+        }
+
+        protected void Application_AcquireRequestState()
+        {
+            var cultura = CulturaHelper.ObterCultureInfo();
+
+            Thread.CurrentThread.CurrentCulture = cultura;
+            Thread.CurrentThread.CurrentUICulture = cultura;
         }
     }
 }
