@@ -203,6 +203,7 @@
     <Compile Include="Models\Perfil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Validacoes\IdadeMinimaAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\blank.gif" />
@@ -222,6 +223,7 @@
     <Content Include="Areas\Vendas\Views\Leiloes\Index.cshtml" />
     <Content Include="Areas\Vendas\Views\Leiloes\Details.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\datejs.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -237,6 +239,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Validacoes\idadeMinima.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -298,6 +301,10 @@
     <ProjectReference Include="..\Loja.Repositorios.SqlServer.EF\Loja.Repositorios.SqlServer.EF.csproj">
       <Project>{3cf1e0b2-8b77-4989-a55f-f79679840979}</Project>
       <Name>Loja.Repositorios.SqlServer.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Loja.Resources\Loja.Resources.csproj">
+      <Project>{52c828a4-ea5e-4a41-9878-42dd9f42b871}</Project>
+      <Name>Loja.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

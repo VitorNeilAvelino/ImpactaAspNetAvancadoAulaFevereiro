@@ -1,10 +1,11 @@
-﻿@model IEnumerable<ProdutoViewModel>
+﻿@using Loja.Resources
+@model IEnumerable<ProdutoViewModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>@Literal.NomeModuloProdutos</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
