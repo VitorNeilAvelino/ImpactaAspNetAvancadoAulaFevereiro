@@ -30,42 +30,55 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
+    @*@foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estoque)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoriaNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmLeilao)
+                </td>
+                <td>
+                    <img src="~/ImagemProduto/Miniatura?produtoId=@item.Id" title="@item.Nome" class="img-circle" />
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { target = "_blank" })
+                </td>
+            </tr>
+        }*@
+
+    <tbody data-bind="foreach: produtos">
         <tr>
+            <td data-bind="text: nome"></td>
+            <td data-bind="text: preco"></td>
+            <td data-bind="text: estoque"></td>
+            <td data-bind="text: categoriaNome"></td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nome)
+                <img data-bind="attr: { src: '/Vendas/ImagemProduto/Miniatura?produtoId=' + id, title: nome }" 
+                     class="img-circle" />
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Preco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estoque)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoriaNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmLeilao)
-            </td>
-            <td>
-                <img src="~/ImagemProduto/Miniatura?produtoId=@item.Id" title="@item.Nome" class="img-circle" />
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { target = "_blank" })
+                <a data-bind="attr: { href: '/Vendas/Leiloes/Details?id=' + id }" target="_blank">Detalhes</a>
             </td>
         </tr>
-    }
+    </tbody>
 
 </table>
 @section scripts{
     <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/Scripts/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/Leiloes/index.js"></script>
     <script type="text/javascript">
-        const connection = $.hubConnection();
-        const hub = connection.createHubProxy("LeilaoHub");
-
-        hub.on("atualizarOfertas", function () { document.location.reload(); });
-
-        connection.start();
+        $(document).ready(Index.inicializar());
     </script>
 }

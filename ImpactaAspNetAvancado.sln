@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loja.Resources", "Loja.Reso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loja.MvcTests", "Loja.MvcTests\Loja.MvcTests.csproj", "{CC49AEC4-9F0E-4D4C-917D-E2562F14D512}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BancoImobiliario", "BancoImobiliario", "{58FAF6A8-83FD-4083-BED2-12A870A631A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancoImobiliario.Dominio", "BancoImobiliario.Dominio\BancoImobiliario.Dominio.csproj", "{9FADE396-12A6-4BAA-8A21-D0EE693B356F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancoImobiliario.DominioTests", "BancoImobiliario.DominioTests\BancoImobiliario.DominioTests.csproj", "{173F98A2-3DE8-4734-A453-456AEA0F03EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +47,14 @@ Global
 		{CC49AEC4-9F0E-4D4C-917D-E2562F14D512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC49AEC4-9F0E-4D4C-917D-E2562F14D512}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC49AEC4-9F0E-4D4C-917D-E2562F14D512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FADE396-12A6-4BAA-8A21-D0EE693B356F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FADE396-12A6-4BAA-8A21-D0EE693B356F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FADE396-12A6-4BAA-8A21-D0EE693B356F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FADE396-12A6-4BAA-8A21-D0EE693B356F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{173F98A2-3DE8-4734-A453-456AEA0F03EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{173F98A2-3DE8-4734-A453-456AEA0F03EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{173F98A2-3DE8-4734-A453-456AEA0F03EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{173F98A2-3DE8-4734-A453-456AEA0F03EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,5 +65,7 @@ Global
 		{3CF1E0B2-8B77-4989-A55F-F79679840979} = {921BD2F3-9C5B-4DA9-B46D-E23175D105D0}
 		{52C828A4-EA5E-4A41-9878-42DD9F42B871} = {921BD2F3-9C5B-4DA9-B46D-E23175D105D0}
 		{CC49AEC4-9F0E-4D4C-917D-E2562F14D512} = {921BD2F3-9C5B-4DA9-B46D-E23175D105D0}
+		{9FADE396-12A6-4BAA-8A21-D0EE693B356F} = {58FAF6A8-83FD-4083-BED2-12A870A631A4}
+		{173F98A2-3DE8-4734-A453-456AEA0F03EF} = {58FAF6A8-83FD-4083-BED2-12A870A631A4}
 	EndGlobalSection
 EndGlobal
